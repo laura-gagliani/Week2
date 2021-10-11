@@ -4,6 +4,7 @@ namespace Day1011.Calcolatrice
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
             Console.WriteLine("Ciao! Benvenuto in Calcolatrice"); //anche questo è un metodo! "già fatto". la stringa data è l'input
@@ -50,7 +51,7 @@ namespace Day1011.Calcolatrice
              //sarebbe stato più sintetico
 
              */
-            bool calcolaAncora = false;
+            bool calcolaAncora;
             do
             {
                 bool esitoConversione;
@@ -99,16 +100,13 @@ namespace Day1011.Calcolatrice
                 switch (operazioneUtente.ToString().ToUpper())
                 {
                     case "A":
-                        int somma = primoNumero + secondoNumero;
-                        Console.WriteLine($"\nLa somma è {somma}");
+                        Somma(primoNumero, secondoNumero);
                         break;
                     case "B":
-                        int differenza = primoNumero - secondoNumero;
-                        Console.WriteLine($"\nLa differenza è {differenza}");
+                        Sottrai(primoNumero, secondoNumero);
                         break;
                     case "C":
-                        int prodotto = primoNumero * secondoNumero;
-                        Console.WriteLine($"\nIl prodotto è {prodotto}");
+                        Moltiplica(primoNumero, secondoNumero);
                         break;
                     case "D":
                         if (secondoNumero == 0)
@@ -117,8 +115,7 @@ namespace Day1011.Calcolatrice
                         }
                         else
                         {
-                            double quoziente = (double)primoNumero / secondoNumero;  //dobbiamo fare il cast, sennò comunque non dà un risultato double
-                            Console.WriteLine($"\nIl quoziente è {quoziente}");
+                            Dividi(primoNumero, secondoNumero);
                         }
                         break;
                 }
@@ -127,6 +124,10 @@ namespace Day1011.Calcolatrice
                 if (Console.ReadLine() == "si")
                 {
                     calcolaAncora = true;
+                }
+                else
+                {
+                    calcolaAncora = false;
                 }
 
             } while (calcolaAncora);
@@ -153,6 +154,32 @@ namespace Day1011.Calcolatrice
             #endregion
 
         }
+
+        private static int Somma(int a, int b)
+        {
+            Console.WriteLine($"\nLa somma è {a+b}");
+            return a + b;
+        }
+
+        private static int Sottrai(int a, int b)
+        {
+            Console.WriteLine($"\nLa differenza è {a-b}");
+            return a - b;
+        }
+
+        private static int Moltiplica(int a, int b)
+        {
+            Console.WriteLine($"\nIl prodotto è {a*b}");
+            return a * b;
+        }
+
+        private static double Dividi(double a, int b)
+        {
+            Console.WriteLine($"\nIl quoziente è {(double)a / b}");
+            return (double)a / b;
+        }
+
+
 
 
         /// <summary>
