@@ -42,13 +42,16 @@ namespace Day1012.EsercizioCarteDiCredito
 
 
             int[] cifreCarta = InserisciArray();
-            int[] cifreCartaMod = RaddoppiaEControllaCifreDispari(cifreCarta);
-            
-            int sommaCifre = SommaElementiArray(cifreCartaMod);
-            Console.WriteLine(ControllaValidità(sommaCifre));
 
-            int[] cifreDispari = ArrayDispariControllato(cifreCarta);
-            int[] cifrePari = ArrayPari(cifreCarta);
+            //int[] cifreCartaMod = RaddoppiaEControllaCifreDispari(cifreCarta);
+            //int sommaCifre = SommaElementiArray(cifreCartaMod);
+            //Console.WriteLine(ControllaValidità(sommaCifre));
+
+            int[] posizioniDispari = ArrayDispariRaddoppiatoControllato(cifreCarta);
+            int[] posizioniPari = ArrayPari(cifreCarta);
+            int sommaPari = SommaElementiArray(posizioniPari);
+            int sommaDispari = SommaElementiArray(posizioniDispari);
+            Console.WriteLine(ControllaValidità(sommaPari + sommaDispari));
         }
 
         private static int[] InserisciArray()
@@ -59,7 +62,7 @@ namespace Day1012.EsercizioCarteDiCredito
             for (int i = 0; i < cifreCarta.Length; i++)
             {
                 bool cifraCorretta = int.TryParse(Console.ReadLine(), out int cifra);
-                while (!cifraCorretta)
+                while ((!cifraCorretta) && cifra <0 && cifra >9)
                 {
                     Console.WriteLine("Errore! Reinserire l'ultima cifra");
                     cifraCorretta = int.TryParse(Console.ReadLine(), out cifra);
@@ -71,18 +74,18 @@ namespace Day1012.EsercizioCarteDiCredito
             return cifreCarta;
         }
 
-        /*private static bool ConfermaInserimentoArray(int[] array)
+        private static bool ConfermaInserimentoArray(int[] array)
         {
             bool corretto = false;
             Console.WriteLine("Le cifre inserite sono:");
             for (int i = 0; i < array.Length; i++)
             {
-                Console.WriteLine(array[i]);
+                Console.Write($"{array[i]}  ");
             }
             Console.WriteLine("Premi y per confermare, n per inserire una nuova carta");
             //booleano a seconda
             return corretto;
-        }*/
+        }
 
         private static int[] RaddoppiaEControllaCifreDispari(int[] array)
         {
@@ -137,7 +140,7 @@ namespace Day1012.EsercizioCarteDiCredito
 
 
 
-        private static int[] ArrayDispariControllato(int[] array)
+        private static int[] ArrayDispariRaddoppiatoControllato(int[] array)
         {
             int[] dispari = new int[array.Length / 2];
             int posizione = 0;
