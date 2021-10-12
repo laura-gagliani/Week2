@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1011.Calcolatrice", "Day
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1011.EsercizioBolletta", "Day1011.EsercizioBolletta\Day1011.EsercizioBolletta.csproj", "{14B85096-40E1-4233-85FB-E69673A7D588}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1012.EsercizioCarteDiCredito", "Day1012.EsercizioCarteDiCredito\Day1012.EsercizioCarteDiCredito.csproj", "{883309B6-1F6B-412E-919B-E036A9479FDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{14B85096-40E1-4233-85FB-E69673A7D588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14B85096-40E1-4233-85FB-E69673A7D588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14B85096-40E1-4233-85FB-E69673A7D588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{883309B6-1F6B-412E-919B-E036A9479FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{883309B6-1F6B-412E-919B-E036A9479FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{883309B6-1F6B-412E-919B-E036A9479FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{883309B6-1F6B-412E-919B-E036A9479FDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
