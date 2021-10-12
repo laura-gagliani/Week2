@@ -14,16 +14,16 @@ namespace Day1011.EsercizioBolletta
             //stampare a video i valori della bolletta, inclusi nome, cognome e costo pagato.
             //Ciascuna delle operazioni descritte sopra dovrà essere implementata attraverso una opportuna routine.
 
-            Console.WriteLine("*****Benvenuto sul sito Luce & Energia*****");
+            Console.WriteLine("*****Benvenuto*****");
 
-            Console.WriteLine("Menu:");
-            Console.WriteLine("(1) Inserimento dati");
-            Console.WriteLine("(2) Calcola il costo della tua bolletta");
+            Console.WriteLine("Menu:");                                 //questa parte del menu può essere messa come metodo
+            Console.WriteLine("(1) Inserimento dati");                  //es. private static void Menu()
+            Console.WriteLine("(2) Calcolo costo della bolletta");      //che fa solo stampe, senza rendere niente
             Console.WriteLine("(3) Riepilogo dati");
             
-            Console.WriteLine("\nDigita il numero corrispondente alla voce desiderata");
-            bool choice = int.TryParse(Console.ReadLine(), out int menuChoice);
-            while ((!choice) && menuChoice < 1 && menuChoice > 3)
+            Console.WriteLine("\nDigita il numero corrispondente alla voce desiderata");  //anche qui si può fare un metodo
+            bool choice = int.TryParse(Console.ReadLine(), out int menuChoice);           //es. private static int Scegli()
+            while ((!choice) && menuChoice < 1 && menuChoice > 3)                         //che rende il numero di selezione dal menu
             {
                 Console.WriteLine("\nErrore nell'inserimento. Riprova");
                 choice = int.TryParse(Console.ReadLine(), out menuChoice);
@@ -37,7 +37,7 @@ namespace Day1011.EsercizioBolletta
 
             //in questo caso un metodo con out sarebbe stato "poco sensato", perché comunque la presenza
             //dello switch case rende obbligatorio il dichiarare le variabili all'inizio. 
-            //cambiato con by ref (la variabile è inizializzata, il metodo ci va a sovrascrivere)
+            //cambiato con by ref (la variabile è dichiarata e inizializzata, il metodo ci va a sovrascrivere)
 
             switch (menuChoice)
             {
@@ -60,11 +60,12 @@ namespace Day1011.EsercizioBolletta
                     }
                     costo = CalcolaBolletta(consumo);
                     Riepiloga(consumo, costo, nomeUtente, cognomeUtente);
-                    break;
+                    break;                                                      //se metto es. premi 0 per uscire posso mettere un "case 0"
+                                                                                //(nell'ottica di avere un ciclo che ripropone il menu)
+                                                                                //nel quale posso usare return, oppure mettere falso ad un booleano
+                                                                                //in modo da rompere il ciclo!
             }
             
-
-
         }
 
         private static bool LogIn(ref int consumo, ref string nomeUtente, ref string cognomeUtente)
@@ -77,7 +78,7 @@ namespace Day1011.EsercizioBolletta
             cognomeUtente = Console.ReadLine();
             Console.WriteLine("\nkwH consumati:");
             bool consumoCorretto = int.TryParse(Console.ReadLine(), out  consumo);
-            while (!consumoCorretto)
+            while (!consumoCorretto)                                                //altra condizione sensata sarebbe consumo >= 0 !!
             {
                 Console.WriteLine("\nErrore. Reinserire il valore:");
                 consumoCorretto = int.TryParse(Console.ReadLine(), out consumo);
@@ -90,7 +91,7 @@ namespace Day1011.EsercizioBolletta
 
         private static int CalcolaBolletta(int consumo)
         {
-            int costo = 40 + (consumo * 10);
+            int costo = 40 + (consumo * 10);                    //qua poteva essere passato il 40 come int quotaFissa, per esempio
             return costo;
         } 
 
