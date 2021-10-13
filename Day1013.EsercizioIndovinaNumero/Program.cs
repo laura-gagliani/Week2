@@ -81,22 +81,49 @@ namespace Day1013.EsercizioIndovinaNumero
             {
                 string path = GeneraESalvaRndNum();
                 int rndNum = RecuperaRndNum(path);
-
-                StampaMessaggiIntroduttivi();
-
-                int guess = OttieniGuessUtente();
-                if (guess == 0)
-                {
-                    return;
-                }
+                StampaMessaggiIntroduttivi();                       
                                 
-                ConfrontaGuessERndNumConLoop(guess, rndNum);
+                int tentativi = 0;
+                int guess;
+
+                do
+                {
+                    guess = OttieniGuessUtente();
+                    if (guess == 0)
+                    {
+                        return;
+                    }
+                    FornisciIndizi(guess, rndNum);                                    
+                    Console.WriteLine($"Finora hai effettuato {tentativi + 1} tentativi");
+                    Console.WriteLine("\nProva con un nuovo numero:");
+                    tentativi++;
+                    
+                } while (guess != rndNum);
+
+                if (guess == rndNum)
+                {
+                    Console.WriteLine($"\nComplimenti! Hai indovinato al {tentativi + 1}° tentativo!");
+                }
 
                 playAgain = ChiediPlayAgain();
 
             } while (playAgain);
 
 
+        }
+
+        private static void FornisciIndizi(int guess, int rndNum)
+        {
+            if (guess > rndNum)
+            {
+                Console.WriteLine("\nSuggerimento: prova con un numero più basso...");
+
+            }
+            else if (guess < rndNum)
+            {
+                Console.WriteLine("\nSuggerimento: prova con un numero più alto...");
+
+            }
         }
 
         private static string SalutaGiocatore()
@@ -152,39 +179,7 @@ namespace Day1013.EsercizioIndovinaNumero
             return guess;
         }
 
-        private static void ConfrontaGuessERndNumConLoop(int guess, int rndNum)
-        {
-            int tentativi = 0;
-
-            while (guess != rndNum)
-            {
-                if (guess > rndNum)
-                {
-                    Console.WriteLine("\nSuggerimento: prova con un numero più basso...");
-
-                }
-                else if (guess < rndNum)
-                {
-                    Console.WriteLine("\nSuggerimento: prova con un numero più alto...");
-
-                }
-
-                Console.WriteLine($"Finora hai effettuato {tentativi + 1} tentativi");
-                Console.WriteLine("\nProva con un nuovo numero:");
-                tentativi++;
-                guess = OttieniGuessUtente();
-                if (guess == 0)
-                {
-                    return;
-                }
-            }
-
-            if (guess == rndNum)
-            {
-                Console.WriteLine($"\nComplimenti! Hai indovinato al {tentativi + 1}° tentativo!");
-            }
-        }
-
+        
         private static bool ChiediPlayAgain()
         {
             bool playAgain = false;
