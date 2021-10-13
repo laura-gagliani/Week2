@@ -75,67 +75,24 @@ namespace Day1013.EsercizioIndovinaNumero
 
 
             string nomeUtente = SalutaGiocatore();
-            
             bool playAgain = false;
-
 
             do
             {
                 string path = GeneraESalvaRndNum();
-                Console.WriteLine("\n---------------------------------------------------\n");
-                Console.WriteLine("\nIl computer ha estratto un numero tra 1 e 100");
-                Console.WriteLine("Prova a indovinarlo!");
-                Console.WriteLine("\n(In qualsiasi momento potrai premere 0 per uscire dal gioco)\n");
+                int rndNum = RecuperaRndNum(path);
 
+                StampaMessaggiIntroduttivi();
 
                 int guess = OttieniGuessUtente();
                 if (guess == 0)
                 {
                     return;
                 }
+                                
+                ConfrontaGuessERndNumConLoop(guess, rndNum);
 
-                int tentativi = 0;
-                int rndNum;
-
-                using (StreamReader sr1 = new StreamReader(path))
-                {
-                    rndNum = int.Parse(sr1.ReadLine());
-                }
-
-
-                while (guess != rndNum)
-                {
-                    if (guess > rndNum)
-                    {
-                        Console.WriteLine("\nSuggerimento: prova con un numero più basso...");
-
-                    }
-                    else if (guess < rndNum)
-                    {
-                        Console.WriteLine("\nSuggerimento: prova con un numero più alto...");
-
-                    }
-
-                    Console.WriteLine($"Finora hai effettuato {tentativi + 1} tentativi");
-                    Console.WriteLine("\nProva con un nuovo numero:");
-                    tentativi++;
-                    guess = OttieniGuessUtente();
-                    if (guess == 0)
-                    {
-                        return;
-                    }
-                }
-
-                if (guess == rndNum)
-                {
-                    Console.WriteLine($"\nComplimenti! Hai indovinato al {tentativi + 1}° tentativo!");
-                }
-
-                Console.WriteLine("Vuoi giocare di nuovo? se sì premi x, altrimenti premi qualsiasi altro tasto per chiudere");
-                if (Console.ReadKey().KeyChar == 'x')
-                {
-                    playAgain = true;
-                }
+                playAgain = ChiediPlayAgain();
 
             } while (playAgain);
 
@@ -148,6 +105,14 @@ namespace Day1013.EsercizioIndovinaNumero
             string nomeUtente = Console.ReadLine();
             Console.WriteLine($"Ciao {nomeUtente}! Giochiamo!");
             return nomeUtente;
+        }
+
+        private static void StampaMessaggiIntroduttivi()
+        {
+            Console.WriteLine("\n---------------------------------------------------\n");
+            Console.WriteLine("\nIl computer ha estratto un numero tra 1 e 100");
+            Console.WriteLine("Prova a indovinarlo!");
+            Console.WriteLine("\n(In qualsiasi momento potrai premere 0 per uscire dal gioco)\n");
         }
 
         private static string GeneraESalvaRndNum()
@@ -164,11 +129,21 @@ namespace Day1013.EsercizioIndovinaNumero
 
         }
 
+        private static int RecuperaRndNum(string path)
+        {
+            int rndNum;
+            using (StreamReader sr1 = new StreamReader(path))
+            {
+                rndNum = int.Parse(sr1.ReadLine());
+            }
+            return rndNum;
+        }
+
         private static int OttieniGuessUtente()
         {
-            
+
             bool inserimentoCorretto = int.TryParse(Console.ReadLine(), out int guess);
-            
+
             while ((!inserimentoCorretto) || guess > 100 || guess < 0)
             {
                 Console.WriteLine("Inserimento scorretto. Prova ancora");
@@ -177,6 +152,50 @@ namespace Day1013.EsercizioIndovinaNumero
             return guess;
         }
 
+        private static void ConfrontaGuessERndNumConLoop(int guess, int rndNum)
+        {
+            int tentativi = 0;
 
+            while (guess != rndNum)
+            {
+                if (guess > rndNum)
+                {
+                    Console.WriteLine("\nSuggerimento: prova con un numero più basso...");
+
+                }
+                else if (guess < rndNum)
+                {
+                    Console.WriteLine("\nSuggerimento: prova con un numero più alto...");
+
+                }
+
+                Console.WriteLine($"Finora hai effettuato {tentativi + 1} tentativi");
+                Console.WriteLine("\nProva con un nuovo numero:");
+                tentativi++;
+                guess = OttieniGuessUtente();
+                if (guess == 0)
+                {
+                    return;
+                }
+            }
+
+            if (guess == rndNum)
+            {
+                Console.WriteLine($"\nComplimenti! Hai indovinato al {tentativi + 1}° tentativo!");
+            }
+        }
+
+        private static bool ChiediPlayAgain()
+        {
+            bool playAgain = false;
+
+            Console.WriteLine("Vuoi giocare di nuovo? se sì premi x, altrimenti premi qualsiasi altro tasto per chiudere");
+            if (Console.ReadKey().KeyChar == 'x')
+            {
+                playAgain = true;
+            }
+
+            return playAgain;
+        }
     }
 }
