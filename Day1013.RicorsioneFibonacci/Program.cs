@@ -66,18 +66,18 @@ namespace Day1013.RicorsioneFibonacci
 
         private static int PopolaNesimoFibonacci(int posizione)
         {
-            int ultimovalore;
+            int valore;
 
-            if (posizione == 0 || posizione == 1)
+            if (posizione == 1 || posizione == 2)
             {
-                ultimovalore = 1;
+                valore = 1;
             }
             else
             {
-                ultimovalore = PopolaNesimoFibonacci(posizione - 1) + PopolaNesimoFibonacci(posizione - 2);
+                valore = PopolaNesimoFibonacci(posizione - 1) + PopolaNesimoFibonacci(posizione - 2);
             }
 
-            return ultimovalore;
+            return valore;
         }
     }
 }

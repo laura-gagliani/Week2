@@ -8,9 +8,9 @@ namespace Day1013.RicorsioneFattoriale
         {
             // fattoriale di N: prodotto di N(N-1)(N-2)....
 
-            int n1 = FattorialeRicorsivo(6);
 
-            int n2 = FattorialeIterativo(4);
+            Console.WriteLine(FattorialeIterativo(5));
+            Console.WriteLine(FattorialeRicorsivo(5));
         }
 
 
@@ -38,7 +38,7 @@ namespace Day1013.RicorsioneFattoriale
 
             for (int i= 1; i < N+1; i++)
             {
-                prodotto = i * prodotto;
+                prodotto = i * prodotto; //come dire prodotto *= i ?
             }
 
             return prodotto;
