@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;
+using System.IO; // raccolta di metodi per gestire IO, Input Output
 
 namespace Day1013.EsercizioIndovinaNumero
 {
@@ -81,30 +81,29 @@ namespace Day1013.EsercizioIndovinaNumero
             {
                 string path = GeneraESalvaRndNum();
                 int rndNum = RecuperaRndNum(path);
-                StampaMessaggiIntroduttivi();                       
-                                
-                int tentativi = 0;
-                int guess;
+                StampaMessaggiIntroduttivi();
 
-                do
+                int tentativi = 0;
+                int guess = OttieniGuessUtente();
+                if (guess == 0)
                 {
+                    return;
+                }
+
+                while (guess != rndNum)
+                {
+                    FornisciSuggerimento(guess, rndNum);
+                    Console.WriteLine($"Finora hai effettuato {tentativi + 1} tentativi");
+                    tentativi++;
+                    Console.WriteLine("\nProva con un nuovo numero:");
                     guess = OttieniGuessUtente();
                     if (guess == 0)
                     {
                         return;
                     }
-                    FornisciIndizi(guess, rndNum);                                    
-                    Console.WriteLine($"Finora hai effettuato {tentativi + 1} tentativi");
-                    Console.WriteLine("\nProva con un nuovo numero:");
-                    tentativi++;
-                    
-                } while (guess != rndNum);
-
-                if (guess == rndNum)
-                {
-                    Console.WriteLine($"\nComplimenti! Hai indovinato al {tentativi + 1}° tentativo!");
                 }
 
+                Console.WriteLine($"\nComplimenti! Hai indovinato al {tentativi + 1}° tentativo!");
                 playAgain = ChiediPlayAgain();
 
             } while (playAgain);
@@ -112,7 +111,7 @@ namespace Day1013.EsercizioIndovinaNumero
 
         }
 
-        private static void FornisciIndizi(int guess, int rndNum)
+        private static void FornisciSuggerimento(int guess, int rndNum)
         {
             if (guess > rndNum)
             {
@@ -179,7 +178,7 @@ namespace Day1013.EsercizioIndovinaNumero
             return guess;
         }
 
-        
+
         private static bool ChiediPlayAgain()
         {
             bool playAgain = false;
