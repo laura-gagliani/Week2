@@ -15,9 +15,11 @@ namespace Day1014.ClassiEsercizioLibreria
         public static void Start()
         {
             bool nuovaOperazione = true;
-            Console.WriteLine("------------Benvenuto!------------\n");
+            Console.WriteLine("*** Benvenuto! ***");
+            LibreriaManager.AggiungiDatiDiProva();
             do
             {
+                Console.WriteLine("\n------------------------------------\n");
                 Console.WriteLine("Premi 1 per aggiungere un libro");
                 Console.WriteLine("Premi 2 per eliminare un libro");
                 Console.WriteLine("Premi 3 per modificare un libro");
@@ -56,7 +58,7 @@ namespace Day1014.ClassiEsercizioLibreria
                         nuovaOperazione = false;
                         break;
                 }
-                                
+
             } while (nuovaOperazione);
 
 
