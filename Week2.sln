@@ -15,11 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1013.EsercizioIndovinaNu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1013.RicorsioneEsempioSommaNNaturali", "Day1013.RicorsioneEsempioSommaNNaturali\Day1013.RicorsioneEsempioSommaNNaturali.csproj", "{02503CA0-28FA-4074-B36E-6431F5A631BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1013.RicorsioneFibonacci", "Day1013.RicorsioneFibonacci\Day1013.RicorsioneFibonacci.csproj", "{FE3D16A3-B098-4155-9B5D-B31A83069647}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1013.RicorsioneFibonacci", "Day1013.RicorsioneFibonacci\Day1013.RicorsioneFibonacci.csproj", "{FE3D16A3-B098-4155-9B5D-B31A83069647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1013.RicorsioneFattoriale", "Day1013.RicorsioneFattoriale\Day1013.RicorsioneFattoriale.csproj", "{1666A68F-4FC6-4FE3-B657-E2B01DA9EDA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1013.RicorsioneFattoriale", "Day1013.RicorsioneFattoriale\Day1013.RicorsioneFattoriale.csproj", "{1666A68F-4FC6-4FE3-B657-E2B01DA9EDA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1013.EsercizioInteressi", "Day1013.EsercizioInteressi\Day1013.EsercizioInteressi.csproj", "{FD430406-D79F-431C-B570-A4C8A2B4E3B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day1013.EsercizioInteressi", "Day1013.EsercizioInteressi\Day1013.EsercizioInteressi.csproj", "{FD430406-D79F-431C-B570-A4C8A2B4E3B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1014.ClassiEsercizioLibreria", "Day1014.ClassiEsercizioLibreria\Day1014.ClassiEsercizioLibreria.csproj", "{17E1803C-1713-42CF-A687-202A46CEBB95}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{FD430406-D79F-431C-B570-A4C8A2B4E3B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD430406-D79F-431C-B570-A4C8A2B4E3B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD430406-D79F-431C-B570-A4C8A2B4E3B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E1803C-1713-42CF-A687-202A46CEBB95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E1803C-1713-42CF-A687-202A46CEBB95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E1803C-1713-42CF-A687-202A46CEBB95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E1803C-1713-42CF-A687-202A46CEBB95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
