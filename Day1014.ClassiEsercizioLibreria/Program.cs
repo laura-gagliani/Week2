@@ -27,6 +27,12 @@ namespace Day1014.ClassiEsercizioLibreria
             Menu.Start();       //quando chiamo il metodo Start della classe Menu lui salta all'altro file e va a vedere cosa fare
 
 
+
+
+
+
+            #region introduzione teorica
+            /*
             #region costruzione di oggetti
             Libro libro1 = new Libro(); //dove Libro() è il costruttore.
                                           //io sto dicendo costruiscimi una oggetto esempioDiLibro del "tipo" Libro, la classe che ho costruito
@@ -62,7 +68,8 @@ namespace Day1014.ClassiEsercizioLibreria
             Console.WriteLine($"La lista contiene {listaDiLibri.Count} libri");
 
             #endregion
-
+            */
+            #endregion
 
 
 

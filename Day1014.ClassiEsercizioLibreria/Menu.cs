@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Day1014.ClassiEsercizioLibreria
 {
     public static class Menu        //scriviamo anche "static" qua
-                                    //questa contiene un metodo di fatto
+                                    //questa contiene un metodo, di fatto
                                     //menu non è un oggetto, non creo istanze menu1, menu2, menu3 come per la classe libri
                                     //per questo è static
-                                    //comunque posso accedere alla classe dal main del program
+                                    //comunque posso accedere (essendo public) alla classe dal main del program
     {
         public static void Start()
         {
@@ -37,19 +37,19 @@ namespace Day1014.ClassiEsercizioLibreria
                 switch (scelta)
                 {
                     case 1:
-                        //TODO aggiungi libro
+                        LibreriaManager.AggiungiLibro();
                         break;
                     case 2:
-                        //TODO togli libro
+                        LibreriaManager.RimuoviLibro();
                         break;
                     case 3:
-                        //TODO modifica libro
+                        LibreriaManager.ModificaLibro();
                         break;
                     case 4:
-                        //TODO stampa tutti libri
+                        LibreriaManager.StampaTuttiLibri();
                         break;
                     case 5:
-                        //TODO filtra per genere
+                        LibreriaManager.FiltraPerGenere();
                         break;
                     case 0:
                         Console.WriteLine("Arrivederci!");
