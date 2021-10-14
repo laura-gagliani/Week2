@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Day1014.ClassiEsercizioLibreria
 {
-    public static class LibreriaManager // anche questa è static, non ha delle istanze. sono solo metodi
+    public static class LibreriaManager
     {
-        //tutti i metodi, le "logiche" per fare le operazioni, ce li creiamo a parte in questa nuova classe! così resta pulito
 
 
         public static List<Libro> libri = new List<Libro>();
@@ -41,7 +40,7 @@ namespace Day1014.ClassiEsercizioLibreria
             Console.WriteLine($"Premi {(int)Genere.Storico} per il genere {Genere.Storico}");
             Console.WriteLine($"Premi {(int)Genere.Fantasy} per il genere {Genere.Fantasy}");
             Console.WriteLine($"Premi {(int)Genere.Saggistica} per il genere {Genere.Saggistica}");
-            Console.WriteLine($"Premi {(int)Genere.Storico} per il genere {Genere.Storico}");
+            Console.WriteLine($"Premi {(int)Genere.Classici} per il genere {Genere.Classici}");
             bool genereCorretto = int.TryParse(Console.ReadLine(), out int numeroGenere);
 
             while ((!genereCorretto) || numeroGenere < 0 || numeroGenere > 4)
@@ -92,7 +91,7 @@ namespace Day1014.ClassiEsercizioLibreria
             return null;
         }
 
-        public static void RimuoviLibro()  
+        public static void RimuoviLibro()
         {
             Console.WriteLine("\nI libri presenti in libreria sono:");
             StampaTuttiLibri();
@@ -113,7 +112,67 @@ namespace Day1014.ClassiEsercizioLibreria
 
         public static void ModificaLibro()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("\nI libri presenti in libreria sono:");
+            StampaTuttiLibri();
+            Console.WriteLine("\nDigita il codice del libro che vuoi modificare");
+            string codice = Console.ReadLine();
+
+            Libro libroDaModificare = CercaLibroPerCodice(codice, libri);
+            if (libroDaModificare == null)
+            {
+                Console.WriteLine("Attenzione! Non è stato trovato nessun libro con questo codice");
+            }
+            else
+            {
+                bool modificheRipetute = true;
+                while (modificheRipetute)
+                {
+                    Console.WriteLine("Premi 1 per modificare il titolo");
+                    Console.WriteLine("Premi 2 per modificare l'autore");
+                    Console.WriteLine("Premi 3 per modificare il genere");
+                    Console.WriteLine("Premi 4 per modificare il prezzo");
+                    Console.WriteLine("Premi 5 per modificare la data di pubblicazione");
+                    Console.WriteLine("Premi 0 per uscire dal menu modifiche");
+
+                    bool sceltaCorretta = int.TryParse(Console.ReadLine(), out int scelta);
+
+                    while ((!sceltaCorretta) || scelta < 0 || scelta > 5)
+                    {
+                        Console.WriteLine("Errore. Seleziona un campo corretto");
+                        sceltaCorretta = int.TryParse(Console.ReadLine(), out scelta);
+                    }
+
+                    switch (scelta)
+                    {
+                        case 1:
+                            Console.WriteLine("Inserisci nuovo titolo");
+                            libroDaModificare.Titolo = Console.ReadLine();
+                            break;
+                        case 2:
+                            Console.WriteLine("Inserisci nuovo autore");
+                            libroDaModificare.Autore = Console.ReadLine();
+                            break;
+
+                        case 3:
+                            Console.WriteLine("Inserisci nuovo genere");
+                            libroDaModificare.Genere = InserisciGenere();
+                            break;
+                        case 4:
+                            Console.WriteLine("Inserisci nuovo prezzo");
+                            libroDaModificare.Prezzo = InserisciPrezzo();
+                            break;
+                        case 5:
+                            Console.WriteLine("Inserisci nuova data di pubblicazione");
+                            libroDaModificare.DataPubblicazione = InserisciDataPubblicazione();
+                            break;
+                        case 0:
+                            modificheRipetute = false;
+                            break;
+                    }
+                }
+
+            }
+
         }
 
         public static void StampaLibriDiUnaLista(List<Libro> lista)
@@ -124,11 +183,11 @@ namespace Day1014.ClassiEsercizioLibreria
             }
             else
             {
-                Console.WriteLine("Codice\t\tTitolo\t\t\tAutore\t\t\tGenere\t\tPrezzo\t\tData di pubblicazione");
+                Console.WriteLine("Codice\t\tTitolo\t\t\tAutore\t\tGenere\t\tPrezzo\t\tData di pubblicazione");
                 Console.WriteLine("------------------------------------------------------------------------------------------------------");
                 foreach (var item in lista)
                 {
-                    Console.Write($"{item.Codice}\t\t{item.Titolo}\t{item.Autore}\t{item.Genere}\t\t{item.Prezzo}\t\t{item.DataPubblicazione.ToShortDateString()}\n");
+                    Console.Write($"{item.Codice}\t\t{item.Titolo}\t{item.Autore}\t\t{item.Genere}\t\t{item.Prezzo}\t\t{item.DataPubblicazione.ToShortDateString()}\n");
                 }
             }
 
@@ -139,19 +198,33 @@ namespace Day1014.ClassiEsercizioLibreria
             StampaLibriDiUnaLista(libri);
         }
 
-        public static void FiltraPerGenere()
+        public static void FiltraPerGenere(List<Libro> lista)
         {
-            throw new NotImplementedException();
+            List<Libro> libriFiltrati = new List<Libro>();
+            Genere genereRichiesto = InserisciGenere();
+            foreach (var item in lista)
+            {
+                if (genereRichiesto == item.Genere)
+                {
+                    libriFiltrati.Add(item);
+                }
+            }
+
+            StampaLibriDiUnaLista(libriFiltrati);
         }
 
 
         public static void AggiungiDatiDiProva()
         {
-            Libro libro1 = new Libro() {Codice = "001", Titolo = "I promessi sposi", DataPubblicazione = new DateTime(1830, 02, 04) };
+            Libro libro1 = new Libro() { Codice = "001", Titolo = "I promessi sposi", Autore = "Manzoni", Genere = (Genere)1, Prezzo = 12.66, DataPubblicazione = new DateTime(1830, 02, 04) };
             libri.Add(libro1);
 
-            Libro libro2 = new Libro() { Codice = "002", Titolo = "Pinocchio" };
+            Libro libro2 = new Libro() { Codice = "002", Titolo = "Pinocchio       ", Autore = "Collodi", Genere = (Genere)0, Prezzo = 8.50, DataPubblicazione = new DateTime(1880, 02, 04) };
             libri.Add(libro2);
+
+            Libro libro3 = new Libro() { Codice = "003", Titolo = "il nome della rosa", Autore = "U.Eco", Genere = (Genere)1, Prezzo = 17.90, DataPubblicazione = new DateTime(1985, 02, 04) };
+            libri.Add(libro3);
+
         }
     }
 }

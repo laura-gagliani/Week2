@@ -51,7 +51,7 @@ namespace Day1014.ClassiEsercizioLibreria
                         LibreriaManager.StampaTuttiLibri();
                         break;
                     case 5:
-                        LibreriaManager.FiltraPerGenere();
+                        LibreriaManager.FiltraPerGenere(LibreriaManager.libri);
                         break;
                     case 0:
                         Console.WriteLine("Arrivederci!");
